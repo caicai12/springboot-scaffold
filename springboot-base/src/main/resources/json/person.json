@@ -1,0 +1,14 @@
+{
+  "person": [
+    {
+      "username": "michael",
+      "sex": "male",
+      "age": "22"
+    },
+    {
+      "username": "jack",
+      "sex": "male",
+      "age": "26"
+    }
+  ]
+}

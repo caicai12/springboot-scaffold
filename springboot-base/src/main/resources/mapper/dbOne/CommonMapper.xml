@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhh.dao.dbOne.CommonMapper">
+
+    <!--查询Banner信息列表-->
+    <select id="listBannerInfo" parameterType="Integer" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT * from banner_info
+        <where>
+            <if test="bannerType != null">
+                and banner_type = #{bannerType}
+            </if>
+        </where>
+    </select>
+
+</mapper>
