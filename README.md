@@ -7,8 +7,8 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 ## springboot-base
 * SpringBoot : 基于约定大于配置原则的开发框架，版本1.5.7.RELEASE
 * SpringMVC : 基于MVC模式的web框架，用于控制转发前端请求
-* MyBatis : 持久层框架，支持定制化 SQL、存储过程以及高级映射
-* Druid : 数据库连接池，可进行连接配置和sql监控
+* MyBatis : 持久层框架，支持定制化SQL、存储过程以及高级映射
+* Druid : 数据库连接池，多数据源，可进行连接配置和SQL监控
 * 数据库 : MySQL5.6，免费开源的关系型数据库
 * 缓存 : Ehcache，可替代为更高性能的redis
 * JDK : 版本1.8，支持Lamda表达式、Optional空对象判断
