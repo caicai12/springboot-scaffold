@@ -14,6 +14,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * JDK : 版本1.8，支持Lamda表达式、Optional空对象判断
 * 分页插件 : 使用com.github.pagehelper并进行封装
 * Lombok : 消除getter/setter等冗余，使编码更优雅
+* 过滤器/拦截器 : 过滤器实现数据过滤，拦截器实现权限拦截
 * JWT : 身份验证方案，含如何创建和解析JWT数据方法
 * API管理工具 : Swagger2，可视化接口管理和测试工具
 * 单元测试 : JUnit，SpringBoot内置，引入即可使用
