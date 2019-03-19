@@ -15,7 +15,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * 分页插件 : 使用com.github.pagehelper并进行封装
 * Lombok : 消除getter/setter等冗余，使编码更优雅
 * JWT : 身份验证方案，含如何创建和解析JWT数据方法
-* API管理工具 : Swagger，可视化接口管理和测试工具
+* API管理工具 : Swagger2，可视化接口管理和测试工具
 * 单元测试 : JUnit，SpringBoot内置，引入即可使用
 * 异常处理 : ControllerAdvice,捕捉处理全局异常
 * 日志框架 : SLF4J，基于门面模式的日志管理框架
