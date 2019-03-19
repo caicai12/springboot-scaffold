@@ -29,7 +29,7 @@
         <mysql.jdbc.version>5.1.4</mysql.jdbc.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <tomcat-servlet-api.version>8.0.36</tomcat-servlet-api.version>
-        <tomcat.embed.version>8.5.20</tomcat.embed.version>
+        <tomcat.embed.version>8.5.32</tomcat.embed.version>
         <fastjson.version>1.2.47</fastjson.version>
         <common-io.version>2.4</common-io.version>
         <jwt.version>0.6.0</jwt.version>
