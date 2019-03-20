@@ -10,6 +10,7 @@
     <!--module模块管理-->
     <modules>
         <module>springboot-base</module>
+        <module>springboot-websocket</module>
     </modules>
 
     <!--springboot父工程-->
