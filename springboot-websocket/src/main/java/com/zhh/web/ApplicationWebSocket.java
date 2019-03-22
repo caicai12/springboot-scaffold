@@ -1,12 +1,14 @@
 package com.zhh.web;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -28,26 +30,34 @@ public class ApplicationWebSocket {
     // 每个客户端连接的会话
     private Session session;
 
-    // 当前用户
-    private String username;
-
     // 新建连接成功时调用方法
     @OnOpen
-    public void onOpen(Session session, @PathParam("userName") String userName){
+    public void onOpen(Session session){
         this.session = session;
-        this.username = userName;
         webSocketMap.put(session.getId(),session);
         webSocketSet.add(this);
-        String message = "有新连接加入：" + userName +",当前在线人数："+ ApplicationWebSocket.webSocketSet.size();
+        String message = "有新连接加入：" + session.getId() +",当前在线人数："+ ApplicationWebSocket.webSocketSet.size();
         logger.info(message);
         broadcastMessage(message);
     }
 
     // 收到客户端消息时调用方法
     @OnMessage
-    public void onMessage(String message, Session session){
-        // 群发消息
-        broadcastMessage(message);
+    public void onMessage(String content, Session session) throws IOException {
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        String touserId = (String)jsonObject.get("touserId");
+        String message = (String)jsonObject.get("message");
+
+        // -1代表群发
+        if("-1".equals(touserId)){
+            // 群发消息
+            broadcastMessage(session.getId() + "说：" + message);
+        }else{
+            // 单发消息
+            privateMessage(session.getId() + "说：" + message, touserId);
+            // 回显消息
+            privateMessage("我说：" + message, session.getId());
+        }
     }
 
     // 连接退出时调用方法
@@ -73,8 +83,17 @@ public class ApplicationWebSocket {
         for(ApplicationWebSocket item : webSocketSet){
             // 异步发送
             item.session.getAsyncRemote().sendText(message);
-            // 同步发送
-            //item.session.getBasicRemote().sendText(message);
+        }
+    }
+
+    // 单聊
+    public static void privateMessage(String message,String touserId) throws IOException {
+        for(ApplicationWebSocket item :webSocketSet){
+            if(item.session.getId().equals(touserId)){
+                // 同步发送
+                item.session.getBasicRemote().sendText(message);
+                break;
+            }
         }
     }
 
