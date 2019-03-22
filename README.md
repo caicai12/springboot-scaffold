@@ -3,6 +3,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 
 ## 示例代码
 * [springboot-base](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-base) : 新项目简洁脚手架搭建，开箱即用，满足日常开发需要  
+* [springboot-websocket](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-websocket) : 集成WebSocket，演示单聊、群聊的即时通讯功能
 
 ## springboot-base
 * SpringBoot : 基于约定大于配置原则的开发框架，版本1.5.7.RELEASE
@@ -22,3 +23,11 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * 日志框架 : SLF4J，基于门面模式的日志管理框架
 * Json工具 : Alibaba FastJson，用于处理Json数据
 * 模板引擎 : FreeMarker，轻巧能实现严格的MVC分离
+
+## springboot-websocket
+* WebSocket解释 : HTML5开始提供的在单个TCP连接上进行全双工通讯的协议
+* @ServerEndpoint : 用于将目前的类定义成一个WebSocket服务器
+* @OnOpen : 打开一个新连接，即有新连接时，会调用被此注解的方法
+* @onClose : 一个WebSocket客户端关闭连接时调用
+* @onMessage : 当服务器接收到客户端发送的消息时所调用的方法
+* @PathParam : 用于接收uri参数，与@PathVariable功能类似
