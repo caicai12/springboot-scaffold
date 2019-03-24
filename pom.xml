@@ -11,6 +11,7 @@
     <modules>
         <module>springboot-base</module>
         <module>springboot-websocket</module>
+        <module>springboot-shiro-jwt</module>
     </modules>
 
     <!--springboot父工程-->
