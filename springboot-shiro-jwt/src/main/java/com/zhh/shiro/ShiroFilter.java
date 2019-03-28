@@ -1,7 +1,5 @@
 package com.zhh.shiro;
 
-import com.sun.deploy.net.URLEncoder;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +8,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @Description: shiro过滤器
@@ -42,7 +39,7 @@ public class ShiroFilter extends BasicHttpAuthenticationFilter {
 
     // 如果带有token，则对token 进行检查，否则直接通过
     @Override
-    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws UnauthorizedException {
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         // 判断请求的请求头是否带上token
         if (isLoginAttempt(request, response)) {
             // 如果存在，则进入 executeLogin 方法执行登入，检查 token 是否正确
@@ -51,7 +48,7 @@ public class ShiroFilter extends BasicHttpAuthenticationFilter {
                 return true;
             } catch (Exception e) {
                 // token错误
-                responseError(response, e.getMessage());
+                e.printStackTrace();
             }
         }
         //如果请求头不存在token，则可能是执行登陆操作或者是游客状态访问，无需检查token，直接返回 true
@@ -74,15 +71,4 @@ public class ShiroFilter extends BasicHttpAuthenticationFilter {
         return super.preHandle(request, response);
     }
 
-    // 将非法请求跳转到 /unauthorized/**
-    private void responseError(ServletResponse response, String message) {
-        try {
-            HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            //设置编码，否则中文字符在重定向时会变为空字符串
-            message = URLEncoder.encode(message, "UTF-8");
-            httpServletResponse.sendRedirect("/unauthorized/" + message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -4,7 +4,10 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.zhh.common.enums.BizExceptionEnum;
+import com.zhh.common.exception.BizException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -39,8 +42,7 @@ public class JwtUtil {
                 .withExpiresAt(expireDate)
                 .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
+            throw new BizException(BizExceptionEnum.UNSUPPORTEDENCODING_EXCEPTION);
         }
     }
 
@@ -59,8 +61,9 @@ public class JwtUtil {
             jwtVerifier.verify(token);
             return true;
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return false;
+            throw new BizException(BizExceptionEnum.UNSUPPORTEDENCODING_EXCEPTION);
+        }catch (TokenExpiredException e){
+            throw new BizException(BizExceptionEnum.TOKEN_EXPIRED_EXCEPTION);
         }
     }
 
@@ -74,8 +77,7 @@ public class JwtUtil {
             DecodedJWT decodeJWT = JWT.decode(token);
             return decodeJWT.getClaim("username").asString();
         }catch(JWTDecodeException e){
-            e.printStackTrace();
-            return null;
+            throw new BizException(BizExceptionEnum.JWTDECODE_EXCEPTION);
         }
     }
 

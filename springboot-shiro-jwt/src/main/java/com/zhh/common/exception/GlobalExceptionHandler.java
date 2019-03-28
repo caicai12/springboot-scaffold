@@ -2,6 +2,10 @@ package com.zhh.common.exception;
 
 import com.zhh.common.enums.BizExceptionEnum;
 import com.zhh.common.utils.ResponsePacket;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,7 +27,7 @@ public class GlobalExceptionHandler {
      * 若不想被该捕获器捕捉异常，可手动try catch即可
      * */
 
-    /**自定义异常
+    /**业务异常
      *@param bizException
      *@return ResponsePacket
      */
@@ -31,6 +35,40 @@ public class GlobalExceptionHandler {
     public ResponsePacket bizExceptionHandler(BizException bizException){
         logger.error(bizException.toString());
         return ResponsePacket.onError(bizException.getBizExceptionEnum());
+    }
+
+    /**
+     * shiro认证异常
+     * @param authenticationException
+     * @return ResponsePacket
+     */
+    @ExceptionHandler(value = AuthenticationException.class)
+    public ResponsePacket authenticationExceptionHandler(AuthenticationException authenticationException){
+        logger.error(authenticationException.toString());
+        return ResponsePacket.onError(BizExceptionEnum.AUTHENTICATION_EXCEPTION);
+    }
+
+    @ExceptionHandler(value = UnauthenticatedException.class)
+    public ResponsePacket unauthenticatedExceptionHandler(UnauthenticatedException unauthenticatedException){
+        logger.error(unauthenticatedException.toString());
+        return ResponsePacket.onError(BizExceptionEnum.AUTHENTICATION_EXCEPTION);
+    }
+
+    /**
+     * shiro权限异常
+     * @param authorizationException
+     * @return ResponsePacket
+     */
+    @ExceptionHandler(value = AuthorizationException.class)
+    public ResponsePacket authorizationExceptionHandler(AuthorizationException authorizationException){
+        logger.error(authorizationException.toString());
+        return ResponsePacket.onError(BizExceptionEnum.AUTHORIZATION_EXCEPTION);
+    }
+
+    @ExceptionHandler(value = UnauthorizedException.class)
+    public ResponsePacket unauthorizedExceptionHandler(UnauthorizedException unauthorizedException){
+        logger.error(unauthorizedException.toString());
+        return ResponsePacket.onError(BizExceptionEnum.AUTHORIZATION_EXCEPTION);
     }
 
      /**默认异常
