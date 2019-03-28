@@ -35,8 +35,10 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 
 ## springboot-shiro-jwt
 * Shiro : 安全框架,执行身份验证、授权等管理，支持注解
-* JWT : 解决跨域身份验证、前后端分离模式弊端，支持过期时间
+* JWT : 解决跨域身份验证、前后端分离模式下会话不易管理弊端，支持过期时间
 * 加密 : 这里用统一指定的SECRET，也可用用户的密码作对应的密钥
 * RBAC : 基于角色的访问控制,用户通过角色与权限进行关联的一种模型
 * 自定义Filter : 继承BasicHttpAuthenticationFilter，重写以下方法，执行顺序:preHandle->isAccessAllowed->isLoginAttempt->executeLogin
 * 自定义Realm : 继承AuthorizingRealm，重写doGetAuthenticationInfo，用于认证用户信息；重写doGetAuthorizationInfo，用于授予用户权限
+* @RequiresRoles : 标注该注解下的方法须拥有指定角色才可访问
+* @RequiresPermissions : 标注该注解下的方法须拥有指定权限才可访问
