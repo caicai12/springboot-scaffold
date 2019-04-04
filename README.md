@@ -5,6 +5,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * [springboot-base](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-base) : 新项目简洁脚手架搭建，开箱即用，满足日常开发需要  
 * [springboot-websocket](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-websocket) : 集成WebSocket，演示单聊、群聊的即时通讯功能  
 * [springboot-shiro-jwt](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-shiro-jwt) : 集成Shiro和JWT，实现无状态模式下的角色权限控制
+* [springboot-redis](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-redis) : 集成Redis，使用RedisTemplate对常用的数据结构进行存取操作
 
 ## springboot-base
 * SpringBoot : 基于约定大于配置原则的开发框架，版本1.5.7.RELEASE
