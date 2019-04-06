@@ -43,3 +43,12 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * 自定义Realm : 继承AuthorizingRealm，重写doGetAuthenticationInfo，用于认证用户信息；重写doGetAuthorizationInfo，用于授予用户权限
 * @RequiresRoles : 标注该注解下的方法须拥有指定角色才可访问
 * @RequiresPermissions : 标注该注解下的方法须拥有指定权限才可访问
+
+## springboot-redis
+* Redis : 基于内存缓存的K/V存储系统，以单线程、非阻塞IO多路复用模式运作，读写效率快，每秒可达10w级别
+* 数据类型 : 支持String、List、Hash、Set、SortSet等数据结构的存取，可设置过期失效或数据淘汰算法机制
+* 持久化 : 支持RDB内存快照和AOF日志文件，AOF方式性能消耗比RDB高，数据恢复速度比RDB慢 
+* 消息 : 可以用来做消息队列和发布订阅，但是一般用的很少，流行的组件有RabbitMQ，ActiveMQ
+* 其他特性 : 支持主从复制；支持事务，但是报错不能回滚；常用作实现分布式锁(或数据库、ZooKeeper实现)
+* 开发规范 : 日常开发应遵循的规范-[阿里云Redis开发规范](https://yq.aliyun.com/articles/531067?spm=5176.10695662.1996646101.searchclickresult.39f471b3JtdCqT)
+* 常见问题 : 使用Redis开发会遇到的四大问题及具体解决方案-[daily-blog](https://github.com/zhouhui5116/daily-blog)
