@@ -6,6 +6,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * [springboot-websocket](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-websocket) : 集成WebSocket，演示单聊、群聊的即时通讯功能  
 * [springboot-shiro-jwt](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-shiro-jwt) : 集成Shiro和JWT，实现无状态模式下的角色权限控制
 * [springboot-redis](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-redis) : 集成Redis，使用RedisTemplate对常用的数据结构进行存取
+* [springboot-rabbitmq](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-rabbitmq) : 集成RabbitMQ，实现多种不同模式下消息的发送与接收
 
 ## springboot-base
 * SpringBoot : 基于约定大于配置原则的开发框架，版本1.5.7.RELEASE
@@ -52,3 +53,14 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * 其他特性 : 支持主从复制；支持事务，但是报错不能回滚；常用作实现分布式锁(或数据库、ZooKeeper实现)
 * 开发规范 : 日常开发应遵循的规范-[阿里云Redis开发规范](https://yq.aliyun.com/articles/531067?spm=5176.10695662.1996646101.searchclickresult.39f471b3JtdCqT)
 * 常见问题 : 使用Redis开发会遇到的四大问题及具体解决方案-[daily-blog](https://github.com/zhouhui5116/daily-blog)
+
+## springboot-rabbitmq
+* RabbitMQ : 基于Erlang语言和AMQP协议开发的高性能消息中间件，常见的工作模式有：topic、direct和fanout
+* Queue : 消息队列，保存消息并转发给消费者。多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理
+* Exchange : 交换机，接收消息，根据路由键转发消息到绑定的队列
+* Binding : Exchange和Queue之间的虚拟连接，Binding中可以包含RoutingKey
+* RoutingKey : 路由规则，交换机可用它来确定如何路由一个特定消息
+* Message : 消息，由Properties和Body组成。Properties可以对消息进行修饰，比如消息的优先级、延迟等高级特性；Body就是消息体内容
+* topic模式 : 有两个特殊的关键字，*可以替换一个单词，#可以替换所有的单词
+* direct模式 : 如果路由键完全匹配，消息就投递到对应的队列,否则丢失 
+* fanout模式 : 投递消息给所有绑定在当前交换机上面的队列
