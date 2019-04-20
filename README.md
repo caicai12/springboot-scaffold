@@ -60,7 +60,7 @@ SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
 * Exchange : 交换机，接收消息，根据路由键转发消息到绑定的队列
 * Binding : Exchange和Queue之间的虚拟连接，Binding中可以包含RoutingKey
 * RoutingKey : 路由规则，交换机可用它来确定如何路由一个特定消息
-* Message : 消息，由Properties和Body组成。Properties可以对消息进行修饰，如消息的优先级、延迟等；Body是消息体内容
+* Message : 消息，由Properties和Body组成。Properties可以对消息进行修饰，如消息优先级、延迟等；Body是消息体内容
 * topic模式 : 有两个特殊的关键字，*可以替换一个单词，#可以替换所有的单词
 * direct模式 : 如果路由键完全匹配，消息就投递到对应的队列,否则丢失 
 * fanout模式 : 投递消息给所有绑定在当前交换机上面的队列
