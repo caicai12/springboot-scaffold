@@ -12,7 +12,7 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtUtils {
+public class JwtUtil {
     private static final String JWT_SECRET = "4ewqiouewqenjcxz";
 
     /**
@@ -59,7 +59,6 @@ public class JwtUtils {
             Claims claims = Jwts.parser().setSigningKey(signingKey).parseClaimsJws(jsonWebToken).getBody();
             return claims;
         } catch (Exception ex) {
-            System.out.println(ex);
             return null;
         }
     }

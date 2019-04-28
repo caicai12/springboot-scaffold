@@ -2,7 +2,7 @@ package com.zhh.common.auth;
 
 import com.zhh.common.utils.CookieUtils;
 import com.zhh.common.utils.DateUtils;
-import com.zhh.common.utils.JwtUtils;
+import com.zhh.common.utils.JwtUtil;
 import com.zhh.entity.IdentityInfo;
 import io.jsonwebtoken.Claims;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ public class IdentityInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        Claims claims = JwtUtils.parseJWT(jwtCookie.getValue());
+        Claims claims = JwtUtil.parseJWT(jwtCookie.getValue());
         if (null == claims) {
             return true;
         }
