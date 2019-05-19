@@ -1,5 +1,5 @@
 # springboot-scaffold
-SpringBoot脚手架，适用于新项目搭建，不断集成技术栈...
+基于SpringBoot开发的脚手架，集成了当前主流的技术框架，如SSM整合、Druid连接池、JWT结合Shiro实现无状态鉴权和权限管控、Redis缓存、RabbitMQ消息中间件、WebSocket长连接通讯等，满足日常开发要求。
 
 ## 示例代码
 * [springboot-base](https://github.com/zhouhui5116/springboot-scaffold/tree/master/springboot-base) : 新项目简洁脚手架搭建，开箱即用，满足日常开发需要  
